@@ -27,5 +27,5 @@ SELECT c.nome, c.cpf, c.telefone, c.endereco, p.nome, p.descricao, p.estoque, p.
 INNER JOIN venda v ON v.cliente_id = c.id 
 INNER JOIN item_venda iv ON iv.venda_id = v.id
 INNER JOIN produto p ON p.id = iv.produto_id
-WHERE c.id = 9
+WHERE c.id = v.cliente_id
 GROUP BY c.nome, c.cpf, c.telefone, c.endereco, p.nome, p.descricao, p.estoque, p.fabricante;
