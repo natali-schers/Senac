@@ -1,0 +1,126 @@
+/*Criando coleção*/
+use produtos;
+
+Resultado:
+switched to db produtos
+
+
+
+/*Inserindo um produto*/
+db.produto.insertOne(
+{
+	nome: "Ventilador de mesa",
+	descricao: "Ventilador branco 40cm 110v", 
+	estoque: 5, fabricante: "Bons Ventos"
+});
+
+Resultado:
+{
+  	acknowledged: true,
+  	insertedId: ObjectId("6519dadce10b5b1b4c844e6a")
+}
+
+
+
+/*Inserindo dois ou mais produtos*/
+db.produto.insertMany([
+{ 
+	nome: "Liquidificador",
+	descricao: "Cor Preta 110v",
+	estoque: 7,
+	fabricante: "Casa & cia"
+},
+{
+	nome: "Processador", 
+	descricao: "Cor Preta 110v",
+	estoque: 7,
+	fabricante: "Casa & cia"
+}]);
+
+Resultado:
+{
+	acknowledged: true,
+  	insertedIds: {
+    	'0': ObjectId("6519dba4e10b5b1b4c844e6b"),
+    	'1': ObjectId("6519dba4e10b5b1b4c844e6c")
+  	}
+}
+
+
+
+/*Atualizando um produto*/
+db.produto.updateOne(
+{
+	"nome": "Processador"
+},
+{
+	$set: {"nome": "Sanduicheira", "estoque": 8}
+});
+
+Resultado:
+{
+  	acknowledged: true,
+  	insertedId: null,
+ 	matchedCount: 1,
+  	modifiedCount: 1,
+  	upsertedCount: 0
+}
+
+
+
+/*Atualizando dois ou mais produtos*/
+db.produto.updateMany(
+{
+	"fabricante": "Casa & cia"
+}, 
+{
+	$set: {"fabricante": "Belle Tech", "estoque": 9}
+});
+
+Resultado: {
+  	acknowledged: true,
+  	insertedId: null,
+ 	matchedCount: 2,
+  	modifiedCount: 2,
+  	upsertedCount: 0
+}
+
+
+
+/*Buscando produto pelo nome*/
+db.produto.find(
+{
+	"nome": "Sanduicheira"
+});
+
+Resultado:
+{
+  _id: ObjectId("6519dba4e10b5b1b4c844e6c"),
+  nome: 'Sanduicheira',
+  descricao: 'Cor Preta 110v',
+  estoque: 9,
+  fabricante: 'Belle Tech'
+}
+
+
+/*Buscando produto pelo fabricante*/
+db.produto.find(
+{
+	"fabricante": "Belle Tech"
+});
+
+Resultado:
+{
+  	_id: ObjectId("6519dba4e10b5b1b4c844e6b"),
+  	nome: 'Liquidificador',
+  	descricao: 'Cor Preta 110v',
+  	estoque: 9,
+  	fabricante: 'Belle Tech'
+}
+{
+	_id: ObjectId("6519dba4e10b5b1b4c844e6c"),
+  	nome: 'Sanduicheira',
+  	descricao: 'Cor Preta 110v',
+  	estoque: 9,
+  	fabricante: 'Belle Tech'
+}
