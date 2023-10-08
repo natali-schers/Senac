@@ -4,3 +4,4 @@ Repositório para armazenamento de atividades do curso técnico de Desenvolvimen
 - UC01 - Planejar o Desenvolvimento de Software;
 - UC02 - Desenvolver Algoritmos;
 - UC03 - Auxiliar na Modelagem e Manipulação de Banco de Dados.
+- UC04 - Auxiliar na Administração de Banco de Dados
